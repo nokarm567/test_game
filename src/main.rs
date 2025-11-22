@@ -6,7 +6,7 @@ async fn main() {
 
     let mut x = screen_width() / 2.0;
     let mut y = screen_height() / 2.0;
-
+    let r = 16.0;
     loop {
         clear_background(DARKPURPLE);
 
@@ -24,10 +24,10 @@ async fn main() {
             y -= MOVEMENT_SPEED * delta_time;
         }
 
-        x = clamp(x, 0.0, screen_width());
-        y = clamp(y, 0.0, screen_height());
+        x = clamp(x, r, screen_width() - r);
+        y = clamp(y, r, screen_height() - r);
 
-        draw_circle(x, y, 16.0, YELLOW);
+        draw_circle(x, y, r, YELLOW);
         next_frame().await
     }
 }
